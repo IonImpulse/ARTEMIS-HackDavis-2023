@@ -1,0 +1,58 @@
+.LoginScreen {
+  background-color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 1999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 20px;
+}
+
+.NumPad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+}
+
+.NumPad button {
+  height: 80px;
+  width: 100px;
+  font-weight: bolder;
+  font-size: 20px;
+}
+
+.login-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    column-gap: 20px;
+}
+
+.login-buttons button {
+    width: 200px;
+    height: 60px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.login-buttons .donation {
+    background-color: var(--success);
+}
+
+.login-buttons .donation:hover {
+    background-color: var(--success-hover);
+}
+
+.login-buttons .sale {
+    background-color: var(--delete);
+}
+
+.login-buttons .sale:hover {
+    background-color: var(--delete-hover);
+}

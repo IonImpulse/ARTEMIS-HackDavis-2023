@@ -1,0 +1,14 @@
+.AppHeader {
+    grid-area: header;
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    column-gap: 30px;
+}
+
+.AppHeader button {
+    font-weight: bold;
+    
+}

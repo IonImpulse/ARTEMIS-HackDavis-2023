@@ -1,0 +1,39 @@
+.Cart {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  overflow-y: scroll;
+  height: calc(100vh - 40px);
+  grid-area: cart;
+}
+
+.cart-item {
+  display: grid;
+  grid-template-areas: "name name" "quantity delete";
+  place-items: center;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  background-color: var(--theme-color-2);
+  padding: 10px;
+  gap: 10px;
+}
+
+.cart-item .name {
+  grid-area: name;
+  font-weight: bold;
+  font-size: larger;
+}
+
+.cart-item .quantity {
+  grid-area: quantity;
+}
+
+.cart-item button {
+  grid-area: delete;
+  background-color: var(--delete);
+}
+
+.cart-item button:hover {
+  background-color: var(--delete-hover);
+}
