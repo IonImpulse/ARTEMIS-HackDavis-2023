@@ -13,7 +13,7 @@ export default function Cart(props) {
                 });
             }
 
-            if (props.cart[item_name] == 1) {
+            if (props.cart[item_name] === 1) {
                 delete props.cart[item_name];
 
                 props.setCart({
