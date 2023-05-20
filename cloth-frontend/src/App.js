@@ -54,7 +54,7 @@ export default function App() {
   };
 
   const availableItems = [
-    { "name": "Backpack", "num_available": 10},
+    { "name": "Backpack/Bag", "num_available": 10},
     { "name": "Belt", "num_available": 10},
     { "name": "Books", "num_available": 10},
     { "name": "Dress", "num_available": 10},
@@ -62,7 +62,7 @@ export default function App() {
     { "name": "Household", "num_available": 10},
     { "name": "Jacket", "num_available": 10},
     { "name": "Jewelery", "num_available": 10},
-    { "name": "Long-Sleeve", "num_available": 10},
+    { "name": "Long-Sleeve/Button Up", "num_available": 10},
     { "name": "Pants", "num_available": 10},
     { "name": "School Supplies", "num_available": 10},
     { "name": "Shirt", "num_available": 10},

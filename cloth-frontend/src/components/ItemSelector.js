@@ -16,8 +16,10 @@ export default function ItemSelector(props) {
                 key={item.id}
                 variant="contained"
                 onClick={() => addToCart(item)}>
-                <img src={"/ItemIcons/" + item.name + ".png"} alt="" border="0" />
-                {item.name}
+                <img src={"/ItemIcons/" + item.name.replace("/", "-") + ".png"} alt="item picture" border="0" />
+                <div>
+                    {item.name}
+                </div>
             </Button>
         );
     }
