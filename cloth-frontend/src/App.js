@@ -8,6 +8,7 @@ import AppHeader from './components/AppHeader';
 export default function App() {
   const [idNumber, setIdNumber] = React.useState('');
   const [cart, setCart] = React.useState([]);
+  const [checkoutType, setCheckoutType] = React.useState('');
 
   const updateIdNumber = (newIdNumber) => {
     setIdNumber(newIdNumber);
@@ -65,7 +66,7 @@ export default function App() {
 
   return (
     <div>
-      <LoginScreen updateIdNumber={updateIdNumber} />
+      <LoginScreen updateIdNumber={updateIdNumber} setCheckoutType={setCheckoutType} />
 
       <div className='ItemScreen'>
         <AppHeader idNumber={idNumber} cart={cart}/>
