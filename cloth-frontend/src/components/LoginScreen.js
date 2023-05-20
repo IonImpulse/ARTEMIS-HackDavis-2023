@@ -1,12 +1,29 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 
-export default function LoginScreen() {
-    // Create a ID number login screen
-    // This should have a numpad for iPad usage
-    // and should have a "Start" button
+export default function LoginScreen(props) {
+    const [idNumber, setIdNumber] = useState('');
 
+    const onChangeID = (event) => {
+        setIdNumber(event.target.value);
+    };
+
+    const inputIDNumber = (num) => {
+        setIdNumber(`${idNumber}${num}`);
+    };
+
+    const startButtonClicked = () => {
+        props.updateIdNumber(idNumber);
+    };
+
+    const clearIDNumber = () => {
+        setIdNumber('');
+    };
+
+    const backspaceIDNumber = () => {
+        setIdNumber(idNumber.slice(0, -1));
+    }
 
     return (
         <>
@@ -14,26 +31,30 @@ export default function LoginScreen() {
                 <div>
                     <h1>Enter Student ID number</h1>
                 </div>
-                <TextField showSoftInputOnFocus={false} label="ID Number" variant="outlined" />
+                <TextField
+                    showSoftInputOnFocus={false}
+                    label="ID Number"
+                    variant="outlined"
+                    onChange={onChangeID}
+                    value={idNumber}
+                />
 
                 <div className="NumPad">
-                    <Button variant="contained">7</Button>
-                    <Button variant="contained">8</Button>
-                    <Button variant="contained">9</Button>
-
-                    <Button variant="contained">4</Button>
-                    <Button variant="contained">5</Button>
-                    <Button variant="contained">6</Button>
-
-                    <Button variant="contained">1</Button>
-                    <Button variant="contained">2</Button>
-                    <Button variant="contained">3</Button>
-
-                    <Button variant="contained">Clear</Button>
-                    <Button variant="contained">0</Button>
-                    <Button variant="contained">←</Button>
-
-                </div><Button variant="contained">Start</Button>
+                    {['7', '8', '9', '4', '5', '6', '1', '2', '3', '0'].map((num) => (
+                        <Button
+                            key={num}
+                            variant="contained"
+                            onClick={() => inputIDNumber(num)}
+                        >
+                            {num}
+                        </Button>
+                    ))}
+                    <Button variant="contained" onClick={() => clearIDNumber()}>Clear</Button>
+                    <Button variant="contained" onClick={() => backspaceIDNumber()}>←</Button>
+                </div>
+                <Button variant="contained" onClick={startButtonClicked}>
+                    Start
+                </Button>
             </div>
         </>
     );
