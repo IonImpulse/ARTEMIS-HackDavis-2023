@@ -51,6 +51,13 @@ html {
 }
 
 .LoginScreen {
+  background-color: var(--page-color);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 1999;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -74,5 +81,5 @@ html {
 
 .ItemScreen {
   display: grid;
-  grid-template-columns: 5fr 1fr;
+  grid-template-columns: 3fr 1fr;
 }

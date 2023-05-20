@@ -9,7 +9,7 @@ export default function ItemSelector(props) {
     return (
         <>
             <div className="ItemSelector">
-                <h1>Available Items</h1>
+                <h1>Items</h1>
                 <div className="Items">
                     {availableItems.map((item) => (
                         <Button

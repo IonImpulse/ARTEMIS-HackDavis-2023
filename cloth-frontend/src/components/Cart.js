@@ -31,7 +31,7 @@ export default function Cart(props) {
                 return (
                     <div className="cart-item">
                         <div className="name">{key}</div>
-                        <div className="quantity">{value}</div>
+                        <div className="quantity">Quantity: {value}</div>
                         <Button variant="contained" onClick={() => removeFromCart(key)}>x</Button>
                     </div>
                 )
