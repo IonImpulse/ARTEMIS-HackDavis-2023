@@ -1,14 +1,37 @@
 import * as React from 'react';
+import Button from '@mui/material/Button';
 
 export default function Cart(props) {
+    const removeFromCart = (item_name) => {
+        // If it exists, decrement by one
+
+        if (item_name in props.cart) {
+            if (props.cart[item_name] > 1) {
+                props.setCart({
+                    ...props.cart,
+                    [item_name]: props.cart[item_name] - 1,
+                });
+            }
+
+            if (props.cart[item_name] == 1) {
+                delete props.cart[item_name];
+
+                props.setCart({
+                    ...props.cart,
+                });
+            }
+        }
+    };
+
 
     return (
-        <div>
+        <div className='Cart'>
             {Object.entries(props.cart).map(([key, value]) => {
                 return (
-                    <div>
+                    <div className="cart-item">
                         <h1>{key}</h1>
                         <h2>{value}</h2>
+                        <Button variant="contained" onClick={() => removeFromCart(key)}>x</Button>
                     </div>
                 )
             })}

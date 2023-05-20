@@ -1,3 +1,16 @@
+:root {
+  --page-color: #e4ebff;
+  --theme-color-1: #112112;
+  --theme-color-2: #fdfdfd;
+
+  --delete: #d15c5c;
+  --delete-hover: #c24c4c;
+}
+
+html {
+  background-color: var(--page-color);
+}
+
 .App {
   text-align: center;
 }
@@ -57,4 +70,46 @@
   width: 100px;
   font-weight: bolder;
   font-size: 20px;
+}
+
+.ItemScreen {
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+}
+
+.Cart {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  
+}
+
+.cart-item {
+  display: grid;
+  grid-template-areas: "name name" "quantity delete";
+  place-items: center;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  background-color: var(--theme-color-2);
+
+}
+
+.cart-item h1 {
+  grid-area: name;
+}
+
+.cart-item h2 {
+  grid-area: quantity;
+}
+
+.cart-item button {
+  grid-area: delete;
+  width: 50px;
+  height: 40px;
+  background-color: var(--delete);
+}
+
+.cart-item button:hover {
+  background-color: var(--delete-hover);
 }

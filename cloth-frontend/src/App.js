@@ -13,26 +13,52 @@ export default function App() {
   };
 
   const addToCart = (item) => {
-    setCart([...cart, item]);
+    // Cart is dict as such:
+    /*
+    {
+      "Bag": 1,
+      "Shirt": 2,
+      "Pants": 1,
+    }
+    */
+
+    // If item is already in cart, increment the count
+    if (item.name in cart) {
+      setCart({
+        ...cart,
+        [item.name]: cart[item.name] + 1,
+      });
+    }
+
+    // Else, add item to cart
+    else {
+      setCart({
+        ...cart,
+        [item.name]: 1,
+      });
+    }
   };
 
   const availableItems = [
-    { id: 1, name: 'Item 1' },
-    { id: 2, name: 'Item 2' },
-    { id: 3, name: 'Item 3' },
+    { "name": "Bag", "num_available": 10},
+    { "name": "Shirt", "num_available": 10},
+    { "name": "Pants", "num_available": 10},
   ];
 
   return (
     <div>
       <LoginScreen updateIdNumber={updateIdNumber} />
-      <ItemSelector
-        idNumber={idNumber}
-        availableItems={availableItems}
-        cart={cart}
-        addToCart={addToCart}
-      />
 
-      <Cart cart={cart} />
+      <div className='ItemScreen'>
+        <ItemSelector
+          idNumber={idNumber}
+          availableItems={availableItems}
+          cart={cart}
+          addToCart={addToCart}
+        />
+
+        <Cart cart={cart} setCart={setCart} />
+      </div>
     </div>
   );
 }
