@@ -4,7 +4,7 @@ import './ItemSelector.css';
 
 export default function ItemSelector(props) {
 
-    const { availableItems, cart, addToCart } = props;
+    const { availableItems, addToCart } = props;
 
     let buttons = [];
     for (let i = 0; i < availableItems.length; i++) {

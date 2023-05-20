@@ -49,6 +49,7 @@ export default function LoginScreen(props) {
                     variant="outlined"
                     onChange={onChangeID}
                     value={idNumber}
+                    className="IDNumberInput"
                 />
 
                 <div className="NumPad">
