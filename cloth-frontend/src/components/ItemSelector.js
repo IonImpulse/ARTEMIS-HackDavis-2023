@@ -16,6 +16,7 @@ export default function ItemSelector(props) {
                             key={item.id}
                             variant="contained"
                             onClick={() => addToCart(item)}>
+                            <img src="ItemIcons/Backpack.jpg" alt="buttonpng" border="0" />
                             {item.name}
                         </Button>
                     ))}
