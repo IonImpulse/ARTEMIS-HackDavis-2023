@@ -50,36 +50,9 @@ html {
   }
 }
 
-.LoginScreen {
-  background-color: var(--page-color);
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100vw;
-  z-index: 1999;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  row-gap: 20px;
-}
-
-.NumPad {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 5px;
-}
-
-.NumPad button {
-  height: 80px;
-  width: 100px;
-  font-weight: bolder;
-  font-size: 20px;
-}
-
 .ItemScreen {
   display: grid;
+  grid-template-areas: "header cart" "items cart";
   grid-template-columns: 3fr 1fr;
+  grid-template-rows: 80px 1fr;
 }

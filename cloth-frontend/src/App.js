@@ -3,6 +3,7 @@ import './App.css';
 import Cart from './components/Cart.js';
 import LoginScreen from './components/LoginScreen.js';
 import ItemSelector from './components/ItemSelector.js';
+import AppHeader from './components/AppHeader';
 
 export default function App() {
   const [idNumber, setIdNumber] = React.useState('');
@@ -67,6 +68,8 @@ export default function App() {
       <LoginScreen updateIdNumber={updateIdNumber} />
 
       <div className='ItemScreen'>
+        <AppHeader idNumber={idNumber} cart={cart}/>
+
         <ItemSelector
           idNumber={idNumber}
           availableItems={availableItems}
