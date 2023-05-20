@@ -1,0 +1,4 @@
+.ItemSelector {
+    display: grid;
+    column-count: 2;
+  }
