@@ -14,10 +14,18 @@ export default function LoginScreen(props) {
         setIdNumber(`${idNumber}${num}`);
     };
 
-    const startButtonClicked = () => {
+    const startDonation = () => {
         props.updateIdNumber(idNumber);
+        props.setCheckoutType("donation");
 
         // Hide the login screen
+        document.getElementsByClassName('LoginScreen')[0].style.display = 'none';
+    };
+
+    const startSale = () => {
+        props.updateIdNumber(idNumber);
+        props.setCheckoutType("sale");
+
         document.getElementsByClassName('LoginScreen')[0].style.display = 'none';
     };
 
@@ -27,7 +35,7 @@ export default function LoginScreen(props) {
 
     const backspaceIDNumber = () => {
         setIdNumber(idNumber.slice(0, -1));
-    }
+    };
 
     return (
         <>
@@ -56,9 +64,15 @@ export default function LoginScreen(props) {
                     <Button variant="contained" onClick={() => clearIDNumber()}>Clear</Button>
                     <Button variant="contained" onClick={() => backspaceIDNumber()}>←</Button>
                 </div>
-                <Button variant="contained" onClick={startButtonClicked}>
-                    Start
-                </Button>
+
+                <div className="login-buttons">
+                    <Button className="donation" variant="contained" onClick={() => startDonation()}>
+                        Donation
+                    </Button>
+                    <Button className="sale" variant="contained" onClick={() => startSale()}>
+                        Sale
+                    </Button>
+                </div>
             </div>
         </>
     );
