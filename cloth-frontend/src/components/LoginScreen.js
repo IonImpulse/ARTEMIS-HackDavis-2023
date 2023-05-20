@@ -15,6 +15,8 @@ export default function LoginScreen(props) {
 
     const startButtonClicked = () => {
         props.updateIdNumber(idNumber);
+
+        //
     };
 
     const clearIDNumber = () => {
