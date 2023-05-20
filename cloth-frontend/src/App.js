@@ -10,6 +10,18 @@ export default function App() {
   const [cart, setCart] = React.useState([]);
   const [checkoutType, setCheckoutType] = React.useState('');
 
+  window.addEventListener('keydown', (event) => {
+    console.log(event.key);
+    if (event.key == ';') {
+      event.preventDefault();
+      document.getElementsByClassName('LoginScreen')[0].style.display = 'flex';
+      document.getElementsByTagName('input')[0].focus();
+    } else if (event.key === '?') {
+      event.preventDefault();
+    }
+  });
+
+
   const updateIdNumber = (newIdNumber) => {
     setIdNumber(newIdNumber);
   };
