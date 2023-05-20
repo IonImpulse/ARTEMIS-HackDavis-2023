@@ -25,3 +25,34 @@
   font-weight: bolder;
   font-size: 20px;
 }
+
+.login-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    column-gap: 20px;
+}
+
+.login-buttons button {
+    width: 200px;
+    height: 60px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.login-buttons .donation {
+    background-color: var(--success);
+}
+
+.login-buttons .donation:hover {
+    background-color: var(--success-hover);
+}
+
+.login-buttons .sale {
+    background-color: var(--delete);
+}
+
+.login-buttons .sale:hover {
+    background-color: var(--delete-hover);
+}

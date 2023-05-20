@@ -3,6 +3,8 @@
   --theme-color-1: #112112;
   --theme-color-2: #fdfdfd;
 
+  --success: #46ac46;
+  --success-hover: #399939;
   --delete: #d15c5c;
   --delete-hover: #c24c4c;
 }
