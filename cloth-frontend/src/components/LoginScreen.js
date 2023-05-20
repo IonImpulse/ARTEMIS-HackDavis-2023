@@ -14,7 +14,7 @@ export default function LoginScreen() {
                 <div>
                     <h1>Enter Student ID number</h1>
                 </div>
-                <TextField id="outlined-basic" label="ID Number" variant="outlined" />
+                <TextField type="number" label="ID Number" variant="outlined" />
 
                 <div className="NumPad">
                     <Button variant="contained">7</Button>
@@ -29,9 +29,9 @@ export default function LoginScreen() {
                     <Button variant="contained">2</Button>
                     <Button variant="contained">3</Button>
 
-                    <Button variant="contained">0</Button>
                     <Button variant="contained">Clear</Button>
-                    <Button variant="contained">Backspace</Button>
+                    <Button variant="contained">0</Button>
+                    <Button variant="contained">←</Button>
 
                 </div><Button variant="contained">Start</Button>
             </div>

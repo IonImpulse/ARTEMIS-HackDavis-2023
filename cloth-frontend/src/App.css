@@ -43,9 +43,18 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
+  row-gap: 20px;
 }
 
 .NumPad {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+}
+
+.NumPad button {
+  height: 80px;
+  width: 100px;
+  font-weight: bolder;
+  font-size: 20px;
 }
