@@ -1,5 +1,6 @@
 import * as React from 'react';
 import './App.css';
+import Cart from './components/Cart.js';
 import LoginScreen from './components/LoginScreen.js';
 import ItemSelector from './components/ItemSelector.js';
 
@@ -30,7 +31,6 @@ export default function App() {
         cart={cart}
         addToCart={addToCart}
       />
-      <Cart cart={cart} />
     </div>
   );
 }
