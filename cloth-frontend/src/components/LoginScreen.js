@@ -14,7 +14,7 @@ export default function LoginScreen() {
                 <div>
                     <h1>Enter Student ID number</h1>
                 </div>
-                <TextField type="number" label="ID Number" variant="outlined" />
+                <TextField showSoftInputOnFocus={false} label="ID Number" variant="outlined" />
 
                 <div className="NumPad">
                     <Button variant="contained">7</Button>
