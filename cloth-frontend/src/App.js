@@ -30,6 +30,7 @@ export default function App() {
         cart={cart}
         addToCart={addToCart}
       />
+      <Cart cart={cart} />
     </div>
   );
 }

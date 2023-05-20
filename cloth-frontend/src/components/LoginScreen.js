@@ -16,7 +16,8 @@ export default function LoginScreen(props) {
     const startButtonClicked = () => {
         props.updateIdNumber(idNumber);
 
-        //
+        // Hide the login screen
+        document.getElementsByClassName('LoginScreen')[0].style.display = 'none';
     };
 
     const clearIDNumber = () => {

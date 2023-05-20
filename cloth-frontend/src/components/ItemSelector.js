@@ -18,14 +18,6 @@ export default function ItemSelector(props) {
           </Button>
         ))}
       </div>
-      <div className="Cart">
-        <h3>Cart:</h3>
-        <ul>
-          {cart.map((item, index) => (
-            <li key={index}>{item.name}</li>
-          ))}
-        </ul>
-      </div>
     </>
   );
 }
