@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
+import './Cart.css';
 
 export default function Cart(props) {
     const removeFromCart = (item_name) => {
@@ -29,8 +30,8 @@ export default function Cart(props) {
             {Object.entries(props.cart).map(([key, value]) => {
                 return (
                     <div className="cart-item">
-                        <h1>{key}</h1>
-                        <h2>{value}</h2>
+                        <div className="name">{key}</div>
+                        <div className="quantity">{value}</div>
                         <Button variant="contained" onClick={() => removeFromCart(key)}>x</Button>
                     </div>
                 )
