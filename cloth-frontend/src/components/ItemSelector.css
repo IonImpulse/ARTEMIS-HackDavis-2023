@@ -14,17 +14,63 @@
 }
 
 .Items button {
+
+}
+
+img {
+    width: 60px;
+    height: 60px;
+}
+
+
+.ItemSelectorItem {
   width: 200px;
   height: 100px;
   border: none;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
   display: grid;
   place-items: center;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 2fr 3fr;
+  position: relative;
+  border-radius: 5px;
+  color: black;
+  background-color: var(--theme-color-2);
 }
 
-img {
-    width: 60px;
-    height: 60px;
-    filter: invert(1);
+.ItemSelectorItem button {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 0;
+  left: 100px;
+  box-shadow: unset;
+  border-radius: 0 5px 5px 0;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  background-color: var(--success);
+
+}
+
+.ItemSelectorItem button:nth-child(1) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 5px 0 0 5px;
+  background-color: var(--delete);
+
+}
+
+.ItemSelectorItem:hover button {
+  opacity: 1;
+}
+
+.ItemSelectorItem button:hover {
+  background-color: var(--success-hover);
+}
+
+.ItemSelectorItem button:nth-child(1):hover {
+  background-color: var(--delete-hover);
+}
+
+.ItemSelectorItem .item-name {
 }

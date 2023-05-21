@@ -17,7 +17,6 @@ export default function App() {
       if (response.status == 200) {
         response.json().then((json) => {
           setTotals(json);
-          console.log(json);
         })
       }
     });
@@ -28,7 +27,6 @@ export default function App() {
       if (response.status == 200) {
         response.json().then((json) => {
           setFields(json);
-          console.log(json);
         })
       }
     });
@@ -80,12 +78,34 @@ export default function App() {
     }
   };
 
+  const removeFromCart = (item) => {
+    // If it exists, decrement by one
+
+    if (item.name in cart) {
+        if (cart[item.name] > 1) {
+            setCart({
+                ...cart,
+                [item.name]: cart[item.name] - 1,
+            });
+        }
+
+        if (cart[item.name] === 1) {
+            delete cart[item.name];
+
+            setCart({
+                ...cart,
+            });
+        }
+    }
+};
+
   let availableItems = fields;
 
   for (let i = 0; i < availableItems.length; i++) {
     availableItems[i].num_available = totals[availableItems[i].key];
   }
     
+  console.log(availableItems);
 
   return (
     <div>
@@ -99,9 +119,10 @@ export default function App() {
           availableItems={availableItems}
           cart={cart}
           addToCart={addToCart}
+          removeFromCart={removeFromCart}
         />
 
-        <Cart cart={cart} setCart={setCart} />
+        <Cart cart={cart} setCart={setCart} removeFromCart={removeFromCart} />
       </div>
     </div>
   );
