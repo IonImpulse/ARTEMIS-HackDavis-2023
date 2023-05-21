@@ -51,3 +51,7 @@ functions:
     handler: getFields
     events:
       - http: fields
+  door-sensor-event:
+    handler: doorSensorEvent
+    events:
+      - http: door-sensor-event
