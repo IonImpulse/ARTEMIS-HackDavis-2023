@@ -16,3 +16,6 @@ POST:
 
 # Get Fields
 https://us-west2-aggie-reuse-mlh-2023.cloudfunctions.net/backend-aws-dev-get-fields
+
+# Door Sensor Event
+https://us-west2-aggie-reuse-mlh-2023.cloudfunctions.net/backend-aws-dev-door-sensor-event

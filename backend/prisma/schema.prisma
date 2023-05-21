@@ -67,3 +67,8 @@ model Field {
   name        String  @unique
   description String?
 }
+
+model DoorSensor {
+  id        Int      @id @default(sequence())
+  createdAt DateTime @default(now())
+}
