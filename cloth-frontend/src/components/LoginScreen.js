@@ -17,6 +17,7 @@ export default function LoginScreen(props) {
     const startDonation = () => {
         props.updateIdNumber(idNumber);
         props.setCheckoutType("donation");
+        props.setCart({});
 
         // Hide the login screen
         document.getElementsByClassName('LoginScreen')[0].style.display = 'none';
@@ -25,6 +26,7 @@ export default function LoginScreen(props) {
     const startSale = () => {
         props.updateIdNumber(idNumber);
         props.setCheckoutType("sale");
+        props.setCart({});
 
         document.getElementsByClassName('LoginScreen')[0].style.display = 'none';
     };

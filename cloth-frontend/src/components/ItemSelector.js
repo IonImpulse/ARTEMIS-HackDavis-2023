@@ -22,7 +22,7 @@ export default function ItemSelector(props) {
 
                 <img src={"/ItemIcons/" + item.name.replace("/", "-") + ".png"} alt="item picture" border="0" />
                 <div className='item-name'>
-                    {item.name}
+                    {item.name} x {item.num_available}
                 </div>
 
                 <Button

@@ -105,14 +105,12 @@ export default function App() {
     availableItems[i].num_available = totals[availableItems[i].key];
   }
     
-  console.log(availableItems);
-
   return (
     <div>
-      <LoginScreen updateIdNumber={updateIdNumber} setCheckoutType={setCheckoutType} checkoutType={checkoutType} />
+      <LoginScreen updateIdNumber={updateIdNumber} setCheckoutType={setCheckoutType} checkoutType={checkoutType} setCart={setCart} />
 
       <div className='ItemScreen'>
-        <AppHeader idNumber={idNumber} cart={cart} setCart={setCart} />
+        <AppHeader idNumber={idNumber} cart={cart} setCart={setCart} checkoutType={checkoutType} availableItems={availableItems}/>
 
         <ItemSelector
           idNumber={idNumber}

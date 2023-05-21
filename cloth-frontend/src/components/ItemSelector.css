@@ -66,6 +66,7 @@ img {
 
 .ItemSelectorItem button:hover {
   background-color: var(--success-hover);
+  box-shadow: unset;
 }
 
 .ItemSelectorItem button:nth-child(1):hover {
