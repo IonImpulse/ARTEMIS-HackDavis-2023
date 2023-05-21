@@ -1,0 +1,57 @@
+service: backend-aws
+
+provider:
+  name: google
+  stage: dev
+  runtime: nodejs16
+  region: us-west2
+  project: aggie-reuse-mlh-2023
+  # The GCF credentials can be a little tricky to set up. Luckily we've documented this for you here:
+  # https://serverless.com/framework/docs/providers/google/guide/credentials/
+  #
+  # the path to the credentials file needs to be absolute
+  credentials: ./gcp_key.json
+  environment:
+
+frameworkVersion: "3"
+
+custom:
+  scripts:
+    commands:
+      make-public-function: gcloud functions add-iam-policy-binding ${self:service}-${self:provider.stage}-${opt:opt.function, "functionName"} --member="allUsers" --role="roles/cloudfunctions.invoker" --project=${self:provider.project} --region=${self:provider.region} | xargs echo
+
+    hooks:
+      "after:deploy:deploy": npx sls make-public-function --stage ${self:provider.stage}
+
+plugins:
+  - serverless-google-cloudfunctions
+  - serverless-dotenv-plugin
+  - serverless-plugin-scripts
+  # - serverless-offline
+
+# needs more granular excluding in production as only the serverless provider npm
+# package should be excluded (and not the whole node_modules directory)
+package:
+  exclude:
+    - node_modules/**
+    - .gitignore
+    - .git/**
+    - gcp_key.json
+
+functions:
+  interaction:
+    handler: interactionHandler
+    events:
+      - http: interaction-handler
+  get-totals:
+    handler: getTotalsHandler
+    events:
+      - http: totals
+  get-fields:
+    handler: getFields
+    events:
+      - http: fields
+  door-sensor-event:
+    handler: doorSensorEvent
+    events:
+      - http: door-sensor-event

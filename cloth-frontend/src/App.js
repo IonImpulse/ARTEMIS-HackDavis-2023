@@ -5,13 +5,39 @@ import LoginScreen from './components/LoginScreen.js';
 import ItemSelector from './components/ItemSelector.js';
 import AppHeader from './components/AppHeader';
 
+const FIELD_API = "https://us-west2-aggie-reuse-mlh-2023.cloudfunctions.net/backend-aws-dev-get-fields";
+const TOTALS_API = "https://us-west2-aggie-reuse-mlh-2023.cloudfunctions.net/backend-aws-dev-get-totals";
+
 export default function App() {
+  const [fields, setFields] = React.useState({});
+  const [totals, setTotals] = React.useState({});
+
+  React.useEffect(() => {
+    fetch(TOTALS_API).then((response) => {
+      if (response.status == 200) {
+        response.json().then((json) => {
+          setTotals(json);
+        })
+      }
+    });
+  }, []);
+
+  React.useEffect(() => {
+    fetch(FIELD_API).then((response) => {
+      if (response.status == 200) {
+        response.json().then((json) => {
+          setFields(json);
+        })
+      }
+    });
+  }, []);
+
+
   const [idNumber, setIdNumber] = React.useState('');
   const [cart, setCart] = React.useState([]);
   const [checkoutType, setCheckoutType] = React.useState('');
 
   window.addEventListener('keydown', (event) => {
-    console.log(event.key);
     if (event.key == ';') {
       event.preventDefault();
       document.getElementsByClassName('LoginScreen')[0].style.display = 'flex';
@@ -20,7 +46,6 @@ export default function App() {
       event.preventDefault();
     }
   });
-
 
   const updateIdNumber = (newIdNumber) => {
     setIdNumber(newIdNumber);
@@ -53,28 +78,34 @@ export default function App() {
     }
   };
 
-  const availableItems = [
-    { "name": "Backpack", "num_available": 10},
-    { "name": "Belt", "num_available": 10},
-    { "name": "Books", "num_available": 10},
-    { "name": "Dress", "num_available": 10},
-    { "name": "Hat", "num_available": 10},
-    { "name": "Household", "num_available": 10},
-    { "name": "Jacket", "num_available": 10},
-    { "name": "Jewelery", "num_available": 10},
-    { "name": "Long-Sleeve", "num_available": 10},
-    { "name": "Pants", "num_available": 10},
-    { "name": "School Supplies", "num_available": 10},
-    { "name": "Shirt", "num_available": 10},
-    { "name": "Shoes", "num_available": 10},
-    { "name": "Shorts", "num_available": 10},
-    { "name": "Skirt", "num_available": 10},
-    { "name": "Sunglasses", "num_available": 10},
-    { "name": "Sweater", "num_available": 10},
-    { "name": "Tank Top", "num_available": 10},
-    { "name": "Tie", "num_available": 10},
-    { "name": "Misc", "num_available": 10},
-  ];
+  const removeFromCart = (item) => {
+    // If it exists, decrement by one
+
+    if (item.name in cart) {
+        if (cart[item.name] > 1) {
+            setCart({
+                ...cart,
+                [item.name]: cart[item.name] - 1,
+            });
+        }
+
+        if (cart[item.name] === 1) {
+            delete cart[item.name];
+
+            setCart({
+                ...cart,
+            });
+        }
+    }
+};
+
+  let availableItems = fields;
+
+  for (let i = 0; i < availableItems.length; i++) {
+    availableItems[i].num_available = totals[availableItems[i].key];
+  }
+    
+  console.log(availableItems);
 
   return (
     <div>
@@ -88,9 +119,10 @@ export default function App() {
           availableItems={availableItems}
           cart={cart}
           addToCart={addToCart}
+          removeFromCart={removeFromCart}
         />
 
-        <Cart cart={cart} setCart={setCart} />
+        <Cart cart={cart} setCart={setCart} removeFromCart={removeFromCart} />
       </div>
     </div>
   );

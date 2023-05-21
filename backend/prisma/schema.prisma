@@ -1,0 +1,74 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "cockroachdb"
+  url      = env("DATABASE_URL")
+}
+
+model Visitor {
+  id        Int            @id @default(sequence())
+  studentId String?        @unique
+  gender    Gender
+  major     String
+  college   String
+  level     String
+  class     String
+  dropOffs  ItemExchange[]
+}
+
+enum Gender {
+  MALE
+  FEMALE
+  UNKNOWN
+}
+
+model ItemExchange {
+  id             Int          @id @default(sequence())
+  type           ExchangeType
+  createdAt      DateTime     @default(now())
+  visitor        Visitor?     @relation(references: [id], fields: [visitorId])
+  visitorId      Int?
+  bags           Int          @default(0)
+  belts          Int          @default(0)
+  books          Int          @default(0)
+  dresses        Int          @default(0)
+  hats           Int          @default(0)
+  household      Int          @default(0)
+  jacket         Int          @default(0)
+  longSleeve     Int          @default(0)
+  pants          Int          @default(0)
+  jewelry        Int          @default(0)
+  schoolSupplies Int          @default(0)
+  shirts         Int          @default(0)
+  shoes          Int          @default(0)
+  shorts         Int          @default(0)
+  skirt          Int          @default(0)
+  sunglasses     Int          @default(0)
+  sweater        Int          @default(0)
+  tankTop        Int          @default(0)
+  tie            Int          @default(0)
+  misc           Int          @default(0)
+}
+
+enum ExchangeType {
+  DROP_OFF
+  PICK_UP
+  INVENTORY_CORRECTION
+}
+
+model Field {
+  id          Int     @id @default(sequence())
+  key         String  @unique
+  name        String  @unique
+  description String?
+}
+
+model DoorSensor {
+  id        Int      @id @default(sequence())
+  createdAt DateTime @default(now())
+}
